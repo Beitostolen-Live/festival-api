@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Person extends Migration
+class User extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class Person extends Migration
      */
     public function up()
     {
-        Schema::create('person', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('user', function (Blueprint $table) {
+            $table->string('subject');
             $table->string('name');
-            $table->string('phone');
             $table->string('email');
-            $table->longText('comment');
-            $table->unsignedBigInteger('supplier_id');
-            $table->foreign('supplier_id')->references('id')->on('supplier');
+            $table->string('phone');
             $table->softDeletes($column = 'deleted_at', $precision = 0);
+            $table->unsignedBigInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('role');
             $table->timestamps();
+            $table->primary('subject');
+            $table->unique('email');
         });
     }
 
@@ -33,6 +34,6 @@ class Person extends Migration
      */
     public function down()
     {
-        Schema::drop('person');
+        Schema::drop('user');
     }
 }

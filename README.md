@@ -1,24 +1,25 @@
-# Lumen PHP Framework
+# Beitostølen Live - Festival API
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+...
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Developer
 
-## Official Documentation
+Developer documentations for the festival-api for Beitostølen Live.
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+### Database
 
-## Contributing
+Setting up a database for development is easiest done using the MySql (or MariaDB) docker image. Then clone the `.env.example`file and just call the file `.env`. In this file, update the database settings.
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Database migration
 
-## Security Vulnerabilities
+Creating a new database migration is done with the command `php artisan make:migration nameoftable`. Then edit the migration file that is created and it is time to run the migration.
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Running the migration is done with this command `php artisan migrate`.
 
-## License
+### Running for development
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Running the application for development is easy. Running one command in the root of the application is all that is needed as long as PHP and composer is installed.
+
+```
+$ php -S localhost:8000 -t public
+```

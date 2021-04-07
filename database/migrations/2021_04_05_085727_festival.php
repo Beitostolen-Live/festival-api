@@ -13,7 +13,15 @@ class Festival extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('festival', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->integer('year');
+            $table->dateTime('start_at', $precision = 0);
+            $table->dateTime('end_at', $precision = 0);
+            $table->timestamps();
+            $table->index(['year']);
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class Festival extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('festival');
     }
 }

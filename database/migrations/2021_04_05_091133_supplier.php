@@ -20,7 +20,7 @@ class Supplier extends Migration
             $table->string('postalcode');
             $table->string('postal');
             $table->text('comment');
-
+            $table->softDeletes($column = 'deleted_at', $precision = 0);
             $table->timestamps();
         });
     }
