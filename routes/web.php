@@ -48,4 +48,25 @@ $router->group(['prefix'=>'api/v1', 'middleware' => 'auth'], function() use($rou
     $router->post('/company/{orgno}/crew/{crew_id}/note', 'CompanyNoteController@create');
     $router->put('/note/{id}', 'CompanyNoteController@update');
     $router->delete('/note/{id}', 'CompanyNoteController@destroy');
+    // Storage locations
+    $router->get('/storage', 'StorageLocationController@index');
+    $router->post('/storage', 'StorageLocationController@create');
+    $router->get('/storage/{id}', 'StorageLocationController@show');
+    $router->put('/storage/{id}', 'StorageLocationController@update');
+    $router->delete('/storage/{id}', 'StorageLocationController@destroy');
+    // Inventory
+    $router->get('/storage/{storagelocation_id}/inventory', 'InventoryController@inventoryByLocation');
+    $router->post('/storage/{storagelocation_id}/inventory', 'InventoryController@create');
+    $router->get('/inventory/{id}', 'InventoryController@show');
+    $router->put('/inventory/{id}', 'InventoryController@update');
+    $router->delete('/inventory/{id}', 'InventoryController@destroy');
+    // Inventory comment
+    $router->get('/inventory/{inventory_id}/comments', 'InventoryCommentController@commentsByInventory');
+    $router->post('/inventory/{inventory_id}/comment', 'InventoryCommentController@create');
+    $router->put('/comment/{id}', 'InventoryCommentController@update');
+    $router->delete('/comment/{id}', 'InventoryCommentController@destroy');
+    // Inventory count
+    $router->get('/inventory/{inventory_id}/count', 'InventoryCountController@countsByInventory');
+    $router->post('/inventory/{inventory_id}/count', 'InventoryCountController@create');
+    $router->delete('/count/{id}', 'InventoryCountController@destroy');
 });
