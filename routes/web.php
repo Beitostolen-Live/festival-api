@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix'=>'api/v1', 'middleware' => 'auth'], function() use($router){
+$router->group(['prefix'=>'api/v1', 'middleware' => ['cors', 'auth']], function() use($router){
     // Festival
     $router->get('/festival', 'FestivalController@index');
     $router->post('/festival', 'FestivalController@create');
@@ -69,4 +69,8 @@ $router->group(['prefix'=>'api/v1', 'middleware' => 'auth'], function() use($rou
     $router->get('/inventory/{inventory_id}/count', 'InventoryCountController@countsByInventory');
     $router->post('/inventory/{inventory_id}/count', 'InventoryCountController@create');
     $router->delete('/count/{id}', 'InventoryCountController@destroy');
+    // Fallback
+    $router->options('{any:.*}', function (){
+        return;
+    });
 });
